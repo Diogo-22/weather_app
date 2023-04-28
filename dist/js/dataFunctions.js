@@ -1,0 +1,91 @@
+//const WEATHER_API_KEY = `cf4cdabdf178f644d4cf75faba1a3691`;
+export const setLocationObject = (locationObj, coordsObj) => {
+    const { lat, lon, name, unit } = coordsObj;
+    locationObj.setLat(lat);
+    locationObj.setLon(lon);
+    locationObj.setName(name);
+    if (unit) {
+        locationObj.setUnit(unit);
+    }
+};
+
+export const getHomeLocation = () => {
+    return localStorage.getItem("defaultWeatherLocation");
+};
+
+
+
+export const getWeatherFromCoords = async (locationObj) => {
+    const lat = locationObj.getLat();
+    const lon = locationObj.getLon();
+    const units = locationObj.getUnit();
+    /* const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${WEATHER_API_KEY}`; */
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode&daily=temperature_2m_max&daily=temperature_2m_min&timezone=auto&forecast_days=7&hourly=is_day`;
+    try {
+        const weatherStream = await fetch(url);
+        const weatherJson = await weatherStream.json();
+        /* const timeZone = weatherJson.timezone; */
+        return weatherJson;
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+export const getdaynightState = async (timeZone) => {
+    const urlvariable = timeZone;
+    const urld = `http://worldtimeapi.org/api/timezone/${urlvariable}`;
+    try {
+        const daynightApi = await fetch(urld);
+        const daynightJson = await daynightApi.json();
+        /* console.log(daynightJson); */
+        const daynightState = daynightJson.dst;
+        /* console.log(daynightState); */
+        
+        return daynightState;
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+export const getCurrentWeatherwithcoords = async (locationObj) => {
+    const lat = locationObj.getLat();
+    const lon = locationObj.getLon();
+    const units = locationObj.getUnit();
+    const unitts = units === "celsius" ? "metric" : "imperial";
+    const url = `https://api.openweathermap.org/data/2.5/weather?&lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=${unitts}`;
+    try {
+        
+        const currentWeatherwithcoords = await fetch(url);
+        /* units = units === "metric" ? "celsius" : "fahrenheit"; */
+        const currentweatherJson = await currentWeatherwithcoords.json();
+        return currentweatherJson;
+    } catch (err) {
+        console.error(err);
+    }
+    
+}
+
+export const getCoordsFromApi = async (entryText, units) => {
+    const regex = /^\d+$/g;
+    const flag = regex.test(entryText) ? "zip" : "q";
+    const unitts = units === "celsius" ? "metric" : "imperial";
+    const url = `https://api.openweathermap.org/data/2.5/weather?&${flag}=${entryText}&units=${unitts}&appid=${WEATHER_API_KEY}`;
+
+    const encodedUrl = encodeURI(url);
+    try {
+        /* units = units === "celsius" ? "metric" : "imperial"; */
+        const dataStream = await fetch(encodedUrl);
+        /* console.log("reached"); */
+        /* units = units === "metric" ? "celsius" : "fahrenheit"; */
+        const jsonData = await dataStream.json();
+        return jsonData;
+    }   catch (err) {
+        console.error(err.stack);
+    }
+}
+
+export const cleanText = (text) => {
+    const regex = / {2,}/g;
+    const entryText = text.replaceAll(regex, " ").trim();
+    return entryText;
+}
