@@ -31,8 +31,8 @@ export const getWeatherFromCoords = async (locationObj) => {
     } */
 
     const urlDataObj = {
-         lat :locationObj.getLat(),
-         lon :locationObj.getLon(),
+         lat: locationObj.getLat(),
+         lon: locationObj.getLon(),
          units: locationObj.getUnit()
     };
     try {
@@ -64,7 +64,7 @@ export const getdaynightState = async (timeZone) => {
 
     //serverless
     const urlDataObj = {
-        zone: timeZone
+        timeZone: timeZone
     }
     try {
         const daynightApi = await fetch(`./.netlify/functions/get_day_night`, {
@@ -98,8 +98,8 @@ export const getCurrentWeatherwithcoords = async (locationObj) => {
     //serverless
 
     const urlDataObj = {
-        lat :locationObj.getLat(),
-        lon :locationObj.getLon(),
+        lat: locationObj.getLat(),
+        lon: locationObj.getLon(),
         units: locationObj.getUnit()
    };
    try {

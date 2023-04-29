@@ -4,7 +4,7 @@ const { WEATHER_API_KEY } = process.env;
 
 exports.handler = async (event, context) => {
     const params = JSON.parse(event.body);
-    const { zone } = params;
+    const { timeZone } = params;
     
     const urlvariable = timeZone;
         const url = `http://worldtimeapi.org/api/timezone/${urlvariable}`;

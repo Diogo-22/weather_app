@@ -9,9 +9,7 @@ exports.handler = async (event, context) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?&lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=${unitts}`;
 
     try {
-        
         const currentWeatherwithcoords = await fetch(url);
-        
         const currentweatherJson = await currentWeatherwithcoords.json();
      return {
             statusCode: 200,
