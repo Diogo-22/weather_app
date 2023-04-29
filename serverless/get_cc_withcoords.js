@@ -1,4 +1,7 @@
+console.log("hello");
 const fetch = require("node-fetch");
+console.log("hello");
+
 
 const { WEATHER_API_KEY } = process.env;
 
@@ -15,7 +18,14 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             body: JSON.stringify(currentweatherJson)
         };
-    } catch (err) {
-            return { statusCode: 422, body: err.stack };
-        }
+    } catch (error) {
+        console.error(error);
+        return {
+          statusCode: 500,
+          body: JSON.stringify({ message: 'Internal Server Error' }),
+        };
+      }
 }
+
+  
+  

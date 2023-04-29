@@ -29,14 +29,13 @@ export const getWeatherFromCoords = async (locationObj) => {
     } catch (err) {
         console.error(err);
     } */
-
     const urlDataObj = {
          lat: locationObj.getLat(),
          lon: locationObj.getLon(),
          units: locationObj.getUnit()
     };
     try {
-        const weatherStream = await fetch(`./.netlify/functions/get_weather`, {
+        const weatherStream = await fetch("/.netlify/functions/get_weather", {
             method: "POST",
             body: JSON.stringify(urlDataObj)
         });
@@ -67,7 +66,7 @@ export const getdaynightState = async (timeZone) => {
         timeZone: timeZone
     }
     try {
-        const daynightApi = await fetch(`./.netlify/functions/get_day_night`, {
+        const daynightApi = await fetch(`/.netlify/functions/get_day_night`, {
             method: "POST",
             body: JSON.stringify(urlDataObj)
         });
@@ -96,17 +95,20 @@ export const getCurrentWeatherwithcoords = async (locationObj) => {
     } */
 
     //serverless
+    
 
     const urlDataObj = {
         lat: locationObj.getLat(),
         lon: locationObj.getLon(),
         units: locationObj.getUnit()
    };
+   console.log(locationObj.getLat());
    try {
-    const currentWeatherwithcoords = await fetch(`./.netlify/functions/get_cc_withcoords`, {
+    const currentWeatherwithcoords = await fetch("/.netlify/functions/get_cc_withcoords", {
         method: "POST",
         body: JSON.stringify(urlDataObj)
     });
+    
     const jsonCurrentWithCoords = await currentWeatherwithcoords.json();
     return jsonCurrentWithCoords;
     } catch (err) {
@@ -138,11 +140,12 @@ export const getCoordsFromApi = async (entryText, units) => {
         units: units
     }
     try {
-        const dataStream = await fetch(`./.netlify/functions/get_coords`, {
+        const dataStream = await fetch(`/.netlify/functions/get_coords`, {
             method: "POST",
             body: JSON.stringify(urlDataObj)
         });
         const jsonData = await dataStream.json();
+        console.log(jsonData)
         return jsonData;
     } catch (err) {
         console.error(err);

@@ -16,4 +16,4 @@ exports.handler = async (event, context) => {
     } catch (err) {
         return { statusCode: 422, body: err.stack };
     }
-}
+};
