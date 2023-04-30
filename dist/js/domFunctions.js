@@ -279,6 +279,7 @@ const displaySixDayForecast = (weatherJson) => {
 }
 
 const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
+    
     const dayAbbreviatonText = dailyweatherJsontime.slice(8, ) + "/" + dailyweatherJsontime.slice(5, 7)/* getDayAbbreviaton(dailyweatherJson.time) */;
     /* console.log(dayAbbreviatonText); */
     const dayAbbreviaton = createElem("p", "dayAbbreviaton", dayAbbreviatonText);
@@ -295,7 +296,7 @@ const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
     iconDiv.appendChild(getdayIcon);
     
     const dayLow = createElem("p", "dayHigh", `${getLow(dailyweatherJson)}º`);
-    
+    resetTrackers();
     return [dayAbbreviaton, iconDiv, dayHigh, dayLow];
 }
 let numtrack2 = 1;
@@ -334,6 +335,12 @@ const getdayCode = (dailyweatherJson) => {
 /* console.log(Icons);
 return Icons; */
 } 
+
+const resetTrackers = (numtrack, numtrack1, numtrack2) => {
+    numtrack = 1;
+    numtrack1 = 1;
+    numtrack2 = 1;
+}
 
 const getDayAbbreviaton = (data) => {
     const dateObj = new Date(data * 1000);
