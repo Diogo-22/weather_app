@@ -340,6 +340,7 @@ const resetTrackers = (numtrack, numtrack1, numtrack2) => {
     numtrack = 1;
     numtrack1 = 1;
     numtrack2 = 1;
+    console.log("RESETED")
 }
 
 const getDayAbbreviaton = (data) => {
