@@ -339,7 +339,7 @@ const getdayCode = (dailyweatherJson) => {
 return Icons; */
 } 
 
-const resetTrackers = (numtrack, numtrack1, numtrack2) => {
+const resetTrackers = () => {
     const num1 = 1;
     numtrack = num1;
     numtrack1 = num1;
