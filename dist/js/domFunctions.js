@@ -274,9 +274,10 @@ const displaySixDayForecast = (weatherJson) => {
         const dfArray = createDailyForecastDivs(weatherJson.daily.time[i], weatherJson);//, weatherJson.daily.temperature_2m_max[i], weatherJson.daily.temperature_2m_min[i]
         /* console.log(dfArray);
         console.log("dom functions"); */
-        resetTrackers();
+        
         displayDailyForecast(dfArray);        
     }
+    resetTrackers();
 }
 
 const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
@@ -339,9 +340,10 @@ return Icons; */
 } 
 
 const resetTrackers = (numtrack, numtrack1, numtrack2) => {
-    numtrack = "1";
-    numtrack1 = "1";
-    numtrack2 = "1";
+    num1 = 1;
+    numtrack = num1;
+    numtrack1 = num1;
+    numtrack2 = num1;
     console.log("RESETED")
 }
 
