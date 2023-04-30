@@ -313,15 +313,17 @@ const getLow = (dailyweatherJson) => {
 }
 
 const getdayCode = (dailyweatherJson) => {
-    for (const i = 1; i <= 6; i++) {
+    const Icons = [];
+    for (let i = 1; i <= 6; i++) {
     const codeArray = dailyweatherJson.daily.weathercode[i];
     console.log(codeArray);
     console.log(i)
-    console.log(dailyweatherJson.daily.weathercode[i])
     const Icon = createDailyForecastIcon(codeArray);
-        return Icon;
+    console.log(Icon)
+    Icons.push(Icon);
 }
 
+return Icons;
 } 
 
 const getDayAbbreviaton = (data) => {
