@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "weather_app",
   "version": "1.0.0",
   "description": "",
@@ -12,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "fetch-blob": "^3.2.0",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^2.6.9"
   }
 }

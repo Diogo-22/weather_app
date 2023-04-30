@@ -85,9 +85,7 @@ export const getCurrentWeatherwithcoords = async (locationObj) => {
     const unitts = units === "celsius" ? "metric" : "imperial";
     const url = `https://api.openweathermap.org/data/2.5/weather?&lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=${unitts}`;
     try {
-        
         const currentWeatherwithcoords = await fetch(url);
-        
         const currentweatherJson = await currentWeatherwithcoords.json();
         return currentweatherJson;
     } catch (err) {
@@ -95,14 +93,13 @@ export const getCurrentWeatherwithcoords = async (locationObj) => {
     } */
 
     //serverless
-    
 
     const urlDataObj = {
         lat: locationObj.getLat(),
         lon: locationObj.getLon(),
         units: locationObj.getUnit()
    };
-   console.log(locationObj.getLat());
+   console.log("runnin");
    try {
     const currentWeatherwithcoords = await fetch("/.netlify/functions/get_cc_withcoords", {
         method: "POST",
@@ -114,7 +111,6 @@ export const getCurrentWeatherwithcoords = async (locationObj) => {
     } catch (err) {
         console.error(err);
     }
-    
 }
 
 export const getCoordsFromApi = async (entryText, units) => {
