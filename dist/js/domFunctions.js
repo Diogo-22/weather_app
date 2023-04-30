@@ -320,13 +320,16 @@ const getLow = (dailyweatherJson) => {
 
 const getdayCode = (dailyweatherJson) => {
     //const Icons = [];
+    const numtrack = 1;
     for (let i = 1; i <= 6;) {
+        i = numtrack;
     const codeArray = dailyweatherJson.daily.weathercode[i];
-    
+    numtrack++;
     const Icon = createDailyForecastIcon(codeArray);
-    console.log(i)
-    i++
-    console.log("after i++")
+    console.log(numtrack)
+    
+    console.log("after")
+    
     console.log(i)
     //Icons.push(Icon);
     return Icon;
