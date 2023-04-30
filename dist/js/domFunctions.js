@@ -169,7 +169,7 @@ const createCurrentConditionsDivs = (weatherObj, currentWeatherConditions, unit,
     const windUnit = unit === "fahrenheit" ? "mph" : "m/s";
    
     const icon = createMainImgDiv(currentWeatherConditions.weather[0].icon, currentWeatherConditions.weather[0].description);
-    const temp = createElem("div", "temp", `${Math.round(Number(currentWeatherConditions.main.temp))}º${tempUnit}`);
+    const temp = createElem("div", "temp", `${Math.round(Number(currentWeatherConditions.main.temp))}º`, `${tempUnit}`);
 
     const properDesc = toProperCase(currentWeatherConditions.weather[0].description);
     const desc = createElem("div", "desc", properDesc);
@@ -317,6 +317,7 @@ const getdayCode = (dailyweatherJson) => {
     for (let i = 1; i <= 6; i++) {
     const codeArray = dailyweatherJson.daily.weathercode[i];
     console.log(codeArray);
+    console.log("up here")
     console.log(i)
     const Icon = createDailyForecastIcon(codeArray);
     console.log(Icon)
