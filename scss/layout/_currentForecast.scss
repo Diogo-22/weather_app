@@ -1,6 +1,6 @@
-/* .vh {
+.vh {
     max-height: 1vh;
-} */
+}
 .currentForecast {
     .currentForecast__location {
         font-size: 1rem;
@@ -16,7 +16,6 @@
     .currentForecast__conditions {
         width: 100%;
         font-size: 1.1rem;
-        align-items: center;
         margin: auto auto 2rem;
         display: grid;
         @include mq(375px) {
