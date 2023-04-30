@@ -320,7 +320,7 @@ const getLow = (dailyweatherJson) => {
 
 const getdayCode = (dailyweatherJson) => {
     //const Icons = [];
-    const numtrack = 1;
+    let numtrack = 1;
     for (let i = 1; i <= 6;) {
         i = numtrack;
     const codeArray = dailyweatherJson.daily.weathercode[i];
