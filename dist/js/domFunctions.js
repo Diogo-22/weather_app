@@ -316,7 +316,7 @@ const getdayCode = (dailyweatherJson) => {
     for (let i = 1; i <= 6; i++) {
     const codeArray = dailyweatherJson.daily.weathercode[i];
     console.log(codeArray);
-    console.log(dailyweatherJson.daily.weathercode[3])
+    console.log(dailyweatherJson.daily.weathercode[i])
     const Icon = createDailyForecastIcon(codeArray);
         return Icon;
 }
@@ -350,7 +350,7 @@ const createDailyForecastIcon = (icon) => {
     else {
         weatherIcon = "snow";
     }
-    console.log(weatherIcon);
+    //console.log(weatherIcon);
 
     const i = document.createElement("i");
 
