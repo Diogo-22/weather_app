@@ -73,7 +73,7 @@ export const updateDisplay = (weatherJson, locationObj, daynightState, currentWe
 
     displaySixDayForecast(weatherJson);
 
-    //setFocusOnSearch();
+    setFocusOnSearch();
     fadeDisplay();
 }
 
@@ -161,7 +161,9 @@ const setBGImage = (weatherClass) => {
 } */
 
 const setFocusOnSearch = () => {
-    document.getElementById("searchBar__text").focus();
+    /* document.getElementById("searchBar__text").focus(); */
+    document.getElementById("searchBar__text").textContent("");
+
 }
 
 const createCurrentConditionsDivs = (weatherObj, currentWeatherConditions, unit, weatherClass) => {
