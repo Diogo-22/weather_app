@@ -317,10 +317,10 @@ const getLow = (dailyweatherJson) => {
         return dayLow;
     }
 }
-
+let numtrack = 1;
 const getdayCode = (dailyweatherJson) => {
     //const Icons = [];
-    let numtrack = 1;
+    
     for (let i = 1; i <= 6;) {
         i = numtrack;
     const codeArray = dailyweatherJson.daily.weathercode[i];
