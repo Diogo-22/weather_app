@@ -311,8 +311,9 @@ const getHigh = (dailyweatherJson) => {
 }
 
 const getLow = (dailyweatherJson) => {
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 6;) {
         const dayLow = Math.round(Number(dailyweatherJson.daily.temperature_2m_min[i]));
+        i++;
         return dayLow;
     }
 }
@@ -323,7 +324,10 @@ const getdayCode = (dailyweatherJson) => {
     const codeArray = dailyweatherJson.daily.weathercode[i];
     
     const Icon = createDailyForecastIcon(codeArray);
+    console.log(i)
     i++
+    console.log("after i++")
+    console.log(i)
     //Icons.push(Icon);
     return Icon;
 }
