@@ -182,7 +182,7 @@ const createCurrentConditionsDivs = (weatherObj, currentWeatherConditions, unit,
     
     console.log(humidity)
     console.log(wind)
-    return [icon, temp, desc, feels, maxTemp, minTemp, humidity, wind];
+    return [icon, temp, desc, feels, humidity, wind ,maxTemp, minTemp ];
 
 }
 
@@ -301,7 +301,7 @@ const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
     
     const dayLow = createElem("p", "dayHigh", `${getLow(dailyweatherJson)}º`);
     
-    return [dayAbbreviaton, dayHigh, iconDiv, dayLow];
+    return [dayAbbreviaton, iconDiv, dayHigh, dayLow];
 }
 let numtrack2 = 1;
 const getHigh = (dailyweatherJson) => {
