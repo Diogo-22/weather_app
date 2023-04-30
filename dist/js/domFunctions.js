@@ -107,7 +107,7 @@ const getWeatherClass = (icon, daynight) => {
     const firstTwoChars = icon.slice(0, 2);
     const lastChar = icon.slice(2);
     const weatherLookup = {
-        "09": "snow",
+        "09": "rain",
         "10": "rain",
         "11": "rain",
         "13": "snow",
@@ -272,8 +272,8 @@ const displaySixDayForecast = (weatherJson) => {
     
     for (let i = 1; i <= 6; i++) {
         const dfArray = createDailyForecastDivs(weatherJson.daily.time[i], weatherJson);//, weatherJson.daily.temperature_2m_max[i], weatherJson.daily.temperature_2m_min[i]
-        console.log(dfArray);
-        console.log("dom functions");
+        /* console.log(dfArray);
+        console.log("dom functions"); */
         displayDailyForecast(dfArray);        
     }
 }
@@ -286,6 +286,7 @@ const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
 
     const dayHigh = createElem("p", "dayHigh", `${getHigh(dailyweatherJson)}º`);
     const getdayIcon = getdayCode(dailyweatherJson);
+    console.log(dailyweatherJson)
     
    /*  const dayIcon = createElem("p", "weathericon", `${getdayIcon}`) */
     const iconDiv = createElem("div", "icon");
