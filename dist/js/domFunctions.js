@@ -178,7 +178,7 @@ const createCurrentConditionsDivs = (weatherObj, currentWeatherConditions, unit,
     const maxTemp = createElem("div", "maxtemp", `High ${Math.round(Number(currentWeatherConditions.main.temp_max))}º`);
     const minTemp = createElem("div", "mintemp", `Low ${Math.round(Number(currentWeatherConditions.main.temp_min))}º`);
     const humidity = createElem("div", "humidity", `Humidity ${currentWeatherConditions.main.humidity}%`);
-    const wind = createElem("div", "wind", `Wind ${Math.round(Number(currentWeatherConditions.wind.speed))} ${windUnit}`);
+    const wind = createElem("div", "wind", `Wind ${Math.round(Number(currentWeatherConditions.wind.speed))}`, `${windUnit}`);
     
     console.log(humidity)
     console.log(wind)
@@ -326,7 +326,7 @@ const getdayCode = (dailyweatherJson) => {
     //const Icons = [];
     
     for (let i = 1; i <= 6;) {
-        console.log(numtrack)
+        //console.log(numtrack)
         i = numtrack;
     const codeArray = dailyweatherJson.daily.weathercode[i];
     numtrack++;
