@@ -106,6 +106,9 @@
             padding-top: 0.5rem;
             font-weight: normal;
             color: $fadecolor;
+            @include mq(375px) {
+                display: block;
+            }
             @include mqMaxWMinH(1024px, 700px) {
                 @include flexCenter;
             }
@@ -121,6 +124,9 @@
             padding-top: 0.5rem;
             font-weight: normal;
             color: $fadecolor;
+            @include mq(425px) {
+                display: block;
+            }
             @include mqMaxWMinH(1024px, 700px) {
                 @include flexCenter;
             }
