@@ -290,8 +290,8 @@ const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
     
    /*  const dayIcon = createElem("p", "weathericon", `${getdayIcon}`) */
     const iconDiv = createElem("div", "icon");
-    for (let i = 1; i <= 6; i++) {
-console.log(getdayIcon[i])
+    for (let i = 0; i <= 5; i++) {
+console.log(getdayIcon[1])
 const icon = getdayIcon[i];
     iconDiv.appendChild(icon);
 
