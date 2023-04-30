@@ -1,8 +1,9 @@
 console.log("hello");
-/* const fetch = require("node-fetch"); */
+//const fetch = require("node-fetch");
 
-import('node-fetch').then((fetch) => {
+/* import('node-fetch').then((fetch) => { */
   // your code using fetch() goes here
+  import fetch from 'node-fetch'
 
 
     console.log("after");
@@ -31,6 +32,6 @@ import('node-fetch').then((fetch) => {
             };
           }
     }
-});
+//});
   
   
