@@ -68,6 +68,7 @@ export const updateDisplay = (weatherJson, locationObj, daynightState, currentWe
     
 
     const ccArray = createCurrentConditionsDivs(weatherJson, currentWeatherConditions, locationObj.getUnit(), weatherClass);
+   
     displayCurrentConditions(ccArray);
 
     displaySixDayForecast(weatherJson);
@@ -263,9 +264,11 @@ const translateIconToFontAwesome = (icon) => {
 }
 
 const displayCurrentConditions = (currentConditionsArray) => {
+    console.log(currentConditionsArray)
     const ccContainer = document.getElementById("currentForecast__conditions");
     currentConditionsArray.forEach((cc) => {
         ccContainer.appendChild(cc);
+        console.log(cc);
     });
 
 }
