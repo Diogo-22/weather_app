@@ -272,7 +272,8 @@ const displaySixDayForecast = (weatherJson) => {
     
     for (let i = 1; i <= 6; i++) {
         const dfArray = createDailyForecastDivs(weatherJson.daily.time[i], weatherJson);//, weatherJson.daily.temperature_2m_max[i], weatherJson.daily.temperature_2m_min[i]
-       /*  console.log(dfArray); */
+        console.log(dfArray);
+        console.log("dom functions");
         displayDailyForecast(dfArray);        
     }
 }
