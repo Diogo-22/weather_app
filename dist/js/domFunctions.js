@@ -290,21 +290,22 @@ const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
     
    /*  const dayIcon = createElem("p", "weathericon", `${getdayIcon}`) */
     const iconDiv = createElem("div", "icon");
-    for (let i = 0; i <= 5; i++) {
+    
     //console.log(getdayIcon[1])
-    const icon = getdayIcon[i];
+    /* const icon = getdayIcon[i]; */
     iconDiv.appendChild(icon);
 
     /* const dayIcon = getdayIcon; */
-    }
+    
     const dayLow = createElem("p", "dayHigh", `${getLow(dailyweatherJson)}º`);
     
     return [dayAbbreviaton, iconDiv, dayHigh, dayLow];
 }
 
 const getHigh = (dailyweatherJson) => {
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 6;) {
         const dayHigh = Math.round(Number(dailyweatherJson.daily.temperature_2m_max[i]));
+        i++;
         return dayHigh;
     }
 }
