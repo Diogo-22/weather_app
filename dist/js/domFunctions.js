@@ -322,6 +322,7 @@ const getdayCode = (dailyweatherJson) => {
     //const Icons = [];
     
     for (let i = 1; i <= 6;) {
+        console.log(numtrack)
         i = numtrack;
     const codeArray = dailyweatherJson.daily.weathercode[i];
     numtrack++;
