@@ -180,6 +180,8 @@ const createCurrentConditionsDivs = (weatherObj, currentWeatherConditions, unit,
     const humidity = createElem("div", "humidity", `Humidity ${currentWeatherConditions.main.humidity}%`);
     const wind = createElem("div", "wind", `Wind ${Math.round(Number(currentWeatherConditions.wind.speed))} ${windUnit}`);
     
+    console.log(humidity)
+    console.log(wind)
     return [icon, temp, desc, feels, maxTemp, minTemp, humidity, wind];
 
 }
@@ -329,14 +331,10 @@ const getdayCode = (dailyweatherJson) => {
     const codeArray = dailyweatherJson.daily.weathercode[i];
     numtrack++;
     const Icon = createDailyForecastIcon(codeArray);
-    /* console.log(numtrack)
-    console.log("after")
-    console.log(i) */
-    //Icons.push(Icon);
+   
     return Icon;
 }
-/* console.log(Icons);
-return Icons; */
+
 } 
 
 const resetTrackers = () => {
@@ -344,7 +342,7 @@ const resetTrackers = () => {
     numtrack = num1;
     numtrack1 = num1;
     numtrack2 = num1;
-    console.log("RESETED")
+    //console.log("RESETED")
 }
 
 const getDayAbbreviaton = (data) => {

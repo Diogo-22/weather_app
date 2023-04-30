@@ -171,7 +171,7 @@ const submitNewLocation = async (event) => {
 
 const updateDataAndDisplay = async (locationObj, currentWeatherConditions) => {
     const weatherJson = await getWeatherFromCoords(locationObj);
-    console.log(weatherJson);
+    //console.log(weatherJson);
     const timeZone = weatherJson.timezone;
     //console.log(timeZone);
     const daynightState = await getdaynightState(timeZone);
