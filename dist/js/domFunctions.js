@@ -340,7 +340,7 @@ return Icons; */
 } 
 
 const resetTrackers = (numtrack, numtrack1, numtrack2) => {
-    num1 = 1;
+    const num1 = 1;
     numtrack = num1;
     numtrack1 = num1;
     numtrack2 = num1;
