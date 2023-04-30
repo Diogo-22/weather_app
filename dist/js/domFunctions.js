@@ -73,7 +73,7 @@ export const updateDisplay = (weatherJson, locationObj, daynightState, currentWe
 
     displaySixDayForecast(weatherJson);
 
-    setFocusOnSearch();
+    //setFocusOnSearch();
     fadeDisplay();
 }
 
