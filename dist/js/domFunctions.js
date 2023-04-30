@@ -313,7 +313,7 @@ const getLow = (dailyweatherJson) => {
 }
 
 const getdayCode = (dailyweatherJson) => {
-    for (let i = 1; i <= 6; i++) {
+    for (const i = 1; i <= 6; i++) {
     const codeArray = dailyweatherJson.daily.weathercode[i];
     console.log(codeArray);
     console.log(i)
