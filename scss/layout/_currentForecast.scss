@@ -2,6 +2,7 @@
     max-height: 1vh;
 }
 .currentForecast {
+    flex-grow: 1;
     .currentForecast__location {
         font-size: 1rem;
         font-weight: normal;
