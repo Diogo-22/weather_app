@@ -286,7 +286,7 @@ const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
 
     const dayHigh = createElem("p", "dayHigh", `${getHigh(dailyweatherJson)}º`);
     const getdayIcon = getdayCode(dailyweatherJson);
-    console.log(dailyweatherJson)
+    //console.log(dailyweatherJson)
     
    /*  const dayIcon = createElem("p", "weathericon", `${getdayIcon}`) */
     const iconDiv = createElem("div", "icon");
@@ -318,18 +318,17 @@ const getLow = (dailyweatherJson) => {
 }
 
 const getdayCode = (dailyweatherJson) => {
-    const Icons = [];
-    for (let i = 1; i <= 6; i++) {
+    //const Icons = [];
+    for (let i = 1; i <= 6;) {
     const codeArray = dailyweatherJson.daily.weathercode[i];
-    /* console.log(codeArray);
-    console.log("up here")
-    console.log(i) */
-    const Icon = createDailyForecastIcon(codeArray);
     
-    Icons.push(Icon);
+    const Icon = createDailyForecastIcon(codeArray);
+    i++
+    //Icons.push(Icon);
+    return Icon;
 }
-console.log(Icons);
-return Icons;
+/* console.log(Icons);
+return Icons; */
 } 
 
 const getDayAbbreviaton = (data) => {
