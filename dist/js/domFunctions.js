@@ -301,7 +301,7 @@ const createDailyForecastDivs = (dailyweatherJsontime, dailyweatherJson) => {
     
     const dayLow = createElem("p", "dayHigh", `${getLow(dailyweatherJson)}º`);
     
-    return [dayAbbreviaton, iconDiv, dayHigh, dayLow];
+    return [dayAbbreviaton, dayHigh, iconDiv, dayLow];
 }
 let numtrack2 = 1;
 const getHigh = (dailyweatherJson) => {
