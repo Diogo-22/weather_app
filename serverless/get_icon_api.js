@@ -8,10 +8,11 @@ exports.handler = async (event, context) => {
     
         try {
             const iconApi = await fetch(url);
-            const iconApiJson = await iconApi.json();
+            console.log(iconApi);
+            //const iconApiJson = await iconApi.json();
         return {
                 statusCode: 200,
-                body: JSON.stringify(iconApiJson)
+                body: iconApi//JSON.stringify(iconApiJson)
             };
         } catch (error) {
             console.error(error);
