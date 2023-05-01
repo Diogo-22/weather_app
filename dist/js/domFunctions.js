@@ -275,6 +275,7 @@ const getIconFromApi = async (firstTwoChars, lastChar) => {
         firstTwochars: firstTwoChars,
         lastchar: lastChar
     }
+    console.log(firstTwoChars + lastChar)
     try {
         const iconApi = await fetch("/.netlify/functions/get_icon_api", {
             method: "POST",

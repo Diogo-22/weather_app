@@ -4,6 +4,7 @@ exports.handler = async (event, context) => {
     const params = JSON.parse(event.body);
         const { firstTwochars, lastchar } = params;
         const url = `https://openweathermap.org/img/wn/${firstTwochars}${lastchar}@2x.png`;
+        console.log(url)
     
         try {
             const iconApi = await fetch(url);
