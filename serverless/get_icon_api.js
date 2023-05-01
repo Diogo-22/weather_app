@@ -8,12 +8,22 @@ exports.handler = async (event, context) => {
     
         try {
             const iconApi = await fetch(url);
-            console.log(iconApi);
-            //const iconApiJson = await iconApi.json();
+            const buffer = await iconApi.buffer();
+            const base64String = buffer.toString("base64");
+            console.log(base64String);
         return {
+        statusCode: 200,
+        headers: {
+            "Content-Type": "image/png",
+        },
+        body: base64String,
+        isBase64Encoded: true,
+        };
+            //const iconApiJson = await iconApi.json();
+        /* return {
                 statusCode: 200,
                 body: iconApi//JSON.stringify(iconApiJson)
-            };
+            }; */
         } catch (error) {
             console.error(error);
             return {

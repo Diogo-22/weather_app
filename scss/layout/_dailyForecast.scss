@@ -24,6 +24,39 @@
             @include mq(375px) {
                 font-size: 1rem;
             }
+
+            div {
+                scale: 1.05;
+                @include mqh(700px) {
+                    scale: 1.6;
+                    margin: 10%
+                }
+            }
+
+            p {
+                margin: 10%;
+                @include mqh(700px) {
+                    scale: 1.3;
+                    margin: 15%
+                }
+                @include mqMinWMaxH(700px, 1400px) {
+                    
+                }
+            }
+            p:first-child {
+                @include mqMaxWMinH(600px, 700px) {
+                    scale: 1.12;
+                }
+                @include mqMinWMaxH(700px, 1400px) {
+                    margin-top: 0;
+                }
+            }
+            p:last-child {
+                margin-top: 0;
+                @include mqMinWMaxH(700px, 1400px) {
+                    
+                }
+            }
         }
     }
 }

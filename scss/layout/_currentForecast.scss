@@ -1,14 +1,15 @@
-.vh {
+/* .vh {
     max-height: 1vh;
-}
+} */
 .currentForecast {
-    flex-grow: 1;
     padding-top: 0.2rem;
+    align-items: center;
     .currentForecast__location {
+        flex-grow: 0.5;
         font-size: 1rem;
         font-weight: normal;
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem;
         @include mq(768px) {
             font-size: 1.3rem;
         }
@@ -17,14 +18,28 @@
 
     .currentForecast__conditions {
         width: 100%;
+        height: 100%;
+        flex-grow: 0.5;
         font-size: 1.1rem;
         margin: auto auto 2rem;
         display: grid;
+        row-gap: 3.5px;
         @include mq(375px) {
             font-size: 1.3rem;
         }
         @include mq(400px) {
             font-size: 1.7rem;
+        }
+        /* @include  */
+        div img {
+            font-size: 3rem;
+            text-shadow: 1px 0 5px $text-shadow-color;
+            @include mqh(768px) {
+                scale: 1.4;
+            }
+            @include mq(768px) {
+                scale: 1.6;
+            }
         }
 
         .temp {
@@ -36,10 +51,10 @@
             text-shadow: 1px 0 5px $text-shadow-color;
             position: relative;
             @include mq(360px) {
-                font-size: 8rem;
+                font-size: 7rem;
             }
             @include mq(768px) {
-                font-size: 9rem;
+                font-size: 8rem;
             }
 
             .unit {
@@ -59,14 +74,10 @@
             @include flexCenter;
             grid-row: 1 / span 1;
             grid-column: 3 / span 2;
-
-            i {
-                font-size: 3rem;
-                text-shadow: 1px 0 5px $text-shadow-color;
-                @include mq(768px) {
-                    font-size: 4rem;
-                }
+            @include mq(768px) {
+                min-height: 150px;
             }
+            
         }
 
         .maxtemp {
@@ -114,7 +125,7 @@
             /* @include mq(375px) {
                 display: block;
             } */
-            @include mqMaxWMinH(1024px, 700px) {
+            @include mq(768px) {
                 @include flexCenter;
             }
             @include mqh(1080px) {
@@ -132,7 +143,7 @@
            /*  @include mq(425px) {
                 display: block;
             } */
-            @include mqMaxWMinH(1024px, 700px) {
+            @include mq(768px) {
                 @include flexCenter;
             }
             @include mqh(1080px) {

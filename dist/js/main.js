@@ -176,6 +176,6 @@ const updateDataAndDisplay = async (locationObj, currentWeatherConditions) => {
     //console.log(timeZone);
     const daynightState = await getdaynightState(timeZone);
    
-    if (weatherJson) updateDisplay(weatherJson, locationObj, daynightState, currentWeatherConditions);
+    if (weatherJson) await updateDisplay(weatherJson, locationObj, daynightState, currentWeatherConditions);
    
 };

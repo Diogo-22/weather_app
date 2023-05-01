@@ -21,3 +21,9 @@
         @content;
     }
 }
+
+@mixin mqMinWMaxH ($size1, $size2) {
+    @media only screen and (min-width: $size1) and (max-height: $size2) {
+        @content;
+    }
+}

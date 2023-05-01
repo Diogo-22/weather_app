@@ -56,7 +56,7 @@ export const updateScreenReaderConfirmation = (message) => {
     document.getElementById("confirmation").textContent = message;
 }
 
-export const updateDisplay = (weatherJson, locationObj, daynightState, currentWeatherConditions) => {
+export const updateDisplay = async (weatherJson, locationObj, daynightState, currentWeatherConditions) => {
     clearDisplay();
     fadeDisplay();
 
@@ -67,7 +67,7 @@ export const updateDisplay = (weatherJson, locationObj, daynightState, currentWe
     updateWeatherLocationHeader(locationObj.getName());
     
 
-    const ccArray = createCurrentConditionsDivs(weatherJson, currentWeatherConditions, locationObj.getUnit(), weatherClass);
+    const ccArray = await createCurrentConditionsDivs(weatherJson, currentWeatherConditions, locationObj.getUnit(), weatherClass);
    
     displayCurrentConditions(ccArray);
 
@@ -166,12 +166,12 @@ const setFocusOnSearch = () => {
 
 }
 
-const createCurrentConditionsDivs = (weatherObj, currentWeatherConditions, unit, weatherClass) => {
+const createCurrentConditionsDivs = async (weatherObj, currentWeatherConditions, unit, weatherClass) => {
    
     const tempUnit = unit === "fahrenheit" ? "F" : "C";
     const windUnit = unit === "fahrenheit" ? "mph" : "m/s";
    
-    const icon = createMainImgDiv(currentWeatherConditions.weather[0].icon, currentWeatherConditions.weather[0].description);
+    const icon = await createMainImgDiv(currentWeatherConditions.weather[0].icon, currentWeatherConditions.weather[0].description);
     const temp = createElem("div", "temp", `${Math.round(Number(currentWeatherConditions.main.temp))}º`, `${tempUnit}`);
 
     const properDesc = toProperCase(currentWeatherConditions.weather[0].description);
@@ -183,16 +183,16 @@ const createCurrentConditionsDivs = (weatherObj, currentWeatherConditions, unit,
     const humidity = createElem("div", "humidity", `Humidity ${currentWeatherConditions.main.humidity}%`);
     const wind = createElem("div", "wind", `Wind ${Math.round(Number(currentWeatherConditions.wind.speed))}`, `${windUnit}`);
     
-    console.log(humidity)
-    console.log(wind)
     return [icon, temp, desc, feels, humidity, wind ,maxTemp, minTemp ];
 
 }
 
-const createMainImgDiv = (icon, altText) => {
+const createMainImgDiv = async (icon, altText) => {
     const iconDiv = createElem("div", "icon");
     iconDiv.id = "icon";
-    const faIcon = translateIconToFontAwesome(icon);
+    /* const apiIcon = createElem("img") */
+    const faIcon = await translateIconToFontAwesome(icon);
+   /*  apiIcon. */
     faIcon.ariaHidden = true;
     faIcon.title = altText;
     iconDiv.appendChild(faIcon);
@@ -281,9 +281,17 @@ const getIconFromApi = async (firstTwoChars, lastChar) => {
             method: "POST",
             body: JSON.stringify(urlDataObj)
         });
-        const iconApiJson = await iconApi.json();
-        console.log(iconApiJson);
-        return iconApiJson;
+        const iconBlob = await iconApi.blob();
+        const imageURL = URL.createObjectURL(iconBlob);
+        const img = new Image();
+        img.src = imageURL;
+        console.log(img)
+        console.log(img.src)
+    
+        return img;
+       /*  const iconApiJson = await iconApi.json();
+        console.log(iconApi);
+        return iconApiJson; */
     } catch (err) {
         console.error(err);
     }
