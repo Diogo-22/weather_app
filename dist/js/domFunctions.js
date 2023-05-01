@@ -61,6 +61,7 @@ export const updateDisplay = async (weatherJson, locationObj, daynightState, cur
     fadeDisplay();
 
     const weatherClass = getWeatherClass(/* weatherJson.daily.weathercode[0] */currentWeatherConditions.weather[0].icon, daynightState);
+    console.log(weatherClass)
     setBGImage(weatherClass);
     /* const screeReaderWeather = buildScreenReaderWeather(weatherJson,locationObj);
  */
@@ -105,9 +106,15 @@ const deleteContents = (parentElement) => {
 const getWeatherClass = (icon, daynight) => {
     
     /* let dayNight = daynight === true ? "clouds" : "night"; */
-    const firstTwoChars = icon.slice(0, 2);
+    let firstTwoChars = icon.slice(0, 2);
+    //console.log(firstTwoChars)
     const lastChar = icon.slice(2);
+    //console.log(lastChar)
     const weatherLookup = {
+        "01": "sunny",
+        "02": "clouds",
+        "03": "clouds",
+        "04": "fog",
         "09": "rain",
         "10": "rain",
         "11": "rain",
@@ -115,13 +122,11 @@ const getWeatherClass = (icon, daynight) => {
         "50": "fog"
     };
     let weatherClass;
-    if (weatherLookup[firstTwoChars]) {
-        weatherClass = weatherLookup[firstTwoChars];
-    } else if (lastChar === "d") {
-        weatherClass = "clouds";
-    } else {
+    if(lastChar === "n") {
         weatherClass = "night";
-    }
+    } else if (weatherLookup[firstTwoChars]) {
+        weatherClass = weatherLookup[firstTwoChars];
+    } else {weatherClass = "snow"};
     /* let weatherLookup = icon === "0, 1, 2, 3" ? "clouiyds" :  45, 48  ? "fog" : icon === "51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95" ? "rain" : icon === "71, 73, 75, 77, 85, 86, 96, 99" ? "snow" : "clouds"; */
    /*  if (icon === 0 || icon === 1 || icon === 2 || icon === 3) {
         weatherLookup = "clouds";
@@ -220,8 +225,8 @@ const translateIconToFontAwesome = async (icon) => {
     const firstTwoChars = icon.slice(0, 2);
     const lastChar = icon.slice(2);
     const apiicon = await getIconFromApi(firstTwoChars, lastChar);
-    console.log(apiicon);
-    console.log("above");
+    /* console.log(apiicon);
+    console.log("above"); */
     return apiicon;
     /* switch (firstTwoChars) {
         case "01":
@@ -285,8 +290,8 @@ const getIconFromApi = async (firstTwoChars, lastChar) => {
         const imageURL = URL.createObjectURL(iconBlob);
         const img = new Image();
         img.src = imageURL;
-        console.log(img)
-        console.log(img.src)
+        /* console.log(img)
+        console.log(img.src) */
     
         return img;
        /*  const iconApiJson = await iconApi.json();
@@ -298,11 +303,11 @@ const getIconFromApi = async (firstTwoChars, lastChar) => {
 }
 
 const displayCurrentConditions = (currentConditionsArray) => {
-    console.log(currentConditionsArray)
+    
     const ccContainer = document.getElementById("currentForecast__conditions");
     currentConditionsArray.forEach((cc) => {
         ccContainer.appendChild(cc);
-        console.log(cc);
+        //console.log(cc);
     });
 
 }
@@ -395,10 +400,10 @@ const createDailyForecastIcon = (icon) => {
     let weatherIcon;
     if (icon === 0 ) {
         weatherIcon = "sunny"
-    } else if (icon === 1) {
+    } else if (icon === 1 || icon === 2) {
         weatherIcon = "sun/clouds"
     } 
-    else if (icon === 2 || icon === 3) {
+    else if (icon === 3) {
         weatherIcon = "clouds";
     } else if (icon === 45 || icon === 48) {
         weatherIcon = "fog";
