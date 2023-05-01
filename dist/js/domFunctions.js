@@ -215,11 +215,11 @@ const createElem = (elemType, divClassName, divText, unit) => {
     return div;
 };
 
-const translateIconToFontAwesome = (icon) => {
+const translateIconToFontAwesome = async (icon) => {
     const i = document.createElement("i");
     const firstTwoChars = icon.slice(0, 2);
     const lastChar = icon.slice(2);
-    const apiicon = getIconFromApi(firstTwoChars, lastChar);
+    const apiicon = await getIconFromApi(firstTwoChars, lastChar);
     console.log(apiicon);
     console.log("above");
     return apiicon;
