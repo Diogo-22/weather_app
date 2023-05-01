@@ -219,7 +219,11 @@ const translateIconToFontAwesome = (icon) => {
     const i = document.createElement("i");
     const firstTwoChars = icon.slice(0, 2);
     const lastChar = icon.slice(2);
-    switch (firstTwoChars) {
+    const apiicon = getIconFromApi(firstTwoChars, lastChar);
+    console.log(apiicon);
+    console.log("above");
+    return apiicon;
+    /* switch (firstTwoChars) {
         case "01":
             if (lastChar === "d") {
                 i.classList.add("far", "fa-sun");
@@ -263,6 +267,25 @@ const translateIconToFontAwesome = (icon) => {
             i.classList.add("far", "fa-question-circle")
     }
     return i;
+    */
+}
+ 
+const getIconFromApi = async (firstTwoChars, lastChar) => {
+    const urlDataObj = {
+        firstTwochars: firstTwoChars,
+        lastchar: lastChar
+    }
+    try {
+        const iconApi = await fetch("/.netlify/functions/get_icon_api", {
+            method: "POST",
+            body: JSON.stringify(urlDataObj)
+        });
+        const iconApiJson = await iconApi.json();
+        console.log(iconApiJson);
+        return iconApiJson;
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 const displayCurrentConditions = (currentConditionsArray) => {
